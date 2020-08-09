@@ -1,0 +1,2 @@
+# docs.bhyi.tk
+docs
