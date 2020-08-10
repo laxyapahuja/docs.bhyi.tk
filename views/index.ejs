@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>docs</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="home" <% if(hidden!='hidden') { %> hidden="true"<%} %>>
+        <h1>Home</h1>
+        <h2>Welcome to the official bhyitk documentation.<br/>
+        Choose from any of the categories above.<br/>
+        Hover over a word to know it's meaning and hover for a while to know its english translation.<br/><br/>
+        thxbye</h2>
+    </div>
+    <script>
+        function funnyOver() {
+            let funny = document.getElementById('funny')
+            let abusing = document.getElementById('abusing')
+            let talking = document.getElementById('talking')
+            talking.style.opacity = 0.2
+            abusing.style.opacity = 0.2
+        }
+        function funnyOut() {
+            let funny = document.getElementById('funny')
+            let abusing = document.getElementById('abusing')
+            let talking = document.getElementById('talking')
+            talking.style.opacity = 1
+            abusing.style.opacity = 1
+        }
+        function talkingOver() {
+            let funny = document.getElementById('funny')
+            let abusing = document.getElementById('abusing')
+            let talking = document.getElementById('talking')
+            funny.style.opacity = 0.2
+            abusing.style.opacity = 0.2
+        }
+        function talkingOut() {
+            let funny = document.getElementById('funny')
+            let abusing = document.getElementById('abusing')
+            let talking = document.getElementById('talking')
+            funny.style.opacity = 1
+            abusing.style.opacity = 1
+        }function abusingOver() {
+            let funny = document.getElementById('funny')
+            let abusing = document.getElementById('abusing')
+            let talking = document.getElementById('talking')
+            talking.style.opacity = 0.2
+            funny.style.opacity = 0.2
+        }
+        function abusingOut() {
+            let funny = document.getElementById('funny')
+            let abusing = document.getElementById('abusing')
+            let talking = document.getElementById('talking')
+            talking.style.opacity = 1
+            funny.style.opacity = 1
+        }
+    </script>
+    <style>
+        td:hover span{
+            visibility: visible;
+        }
+
+        #b {
+            display: none;
+        }
+        <% if(data[0].meaning) { %>
+        #a {
+            display: inline;
+          }
+          
+        td:hover #a {
+            display: none;
+        }
+
+        td:hover #b {
+            display: inline;
+        }
+        <% } %>
+    </style>
+    <h1 class="heading-text" id="funny" onmouseover="funnyOver()" onmouseout="funnyOut()" style="opacity: <%= opacity[0] %>;"><a href="/funny" id="funny">funny words</a></h1>
+    <h1 class="heading-text" id="abusing" onmouseover="abusingOver()" onmouseout="abusingOut()" style="opacity: <%= opacity[1] %>;"><a href="/abusing" id="abusing">abusing</a></h1>
+    <h1 class="heading-text" id="talking" onmouseover="talkingOver()" onmouseout="talkingOut()" style="opacity: <%= opacity[2] %>;"><a href="/talking" id="talking">talking</a></h1>
+    <div class="table">
+        <table <%= hidden %>>
+            <% for (let i = 0; i < data.length; i+=5) { %>
+                <tr>
+                    <td style="color: <%= color %>;" title="<%= data[i].eng %>"><span id='a'><%= data[i].word %></span><% if(data[i].meaning) { %><span id='b'><%= data[i].meaning%><% } %></span></td>
+                    <td style="color: <%= color %>;" title="<%= data[i+1].eng %>"><span id='a'><%= data[i+1].word %></span><span id='b'><%= data[i+1].meaning%></span></td>
+                    <td style="color: <%= color %>;" title="<%= data[i+2].eng %>"><span id='a'><%= data[i+2].word %></span><span id='b'><%= data[i+2].meaning%></span></td>
+                    <td style="color: <%= color %>;" title="<%= data[i+3].eng %>"><span id='a'><%= data[i+3].word %></span><span id='b'><%= data[i+3].meaning%></span></td>
+                    <td style="color: <%= color %>;" title="<%= data[i+4].eng %>"><span id='a'><%= data[i+4].word %></span><span id='b'><%= data[i+4].meaning%></span></td>
+                </tr>    
+            <% } %>
+        </table>
+    </div>
+    <h4>bhyitk documentation | © <a id="gg" href="https://github.com/laxyapahuja">gg </a></h4>
+</body>
+</html>
